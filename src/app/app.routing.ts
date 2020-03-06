@@ -9,20 +9,32 @@ import { LoginComponent } from './examples/login/login.component';
 import { ProfileComponent } from './examples/profile/profile.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
+import {HomeComponent} from './home/home.component';
+import {EventsComponent} from './events/events.component';
+import {TeamComponent} from './team/team.component';
+import {SponsorsComponent} from './sponsors/sponsors.component';
+
 const routes: Routes =[
-    { path: '', redirectTo: 'index', pathMatch: 'full' },
+    { path: '', redirectTo: 'landing', pathMatch: 'full' },
+
     { path: 'index',                component: ComponentsComponent },
     { path: 'nucleoicons',          component: NucleoiconsComponent },
     { path: 'examples/landing',     component: LandingComponent },
     { path: 'examples/login',       component: LoginComponent },
-    { path: 'examples/profile',     component: ProfileComponent }
+    { path: 'examples/profile',     component: ProfileComponent },
+    { path: 'landing',     component: HomeComponent },
+    { path: 'events',     component: EventsComponent },
+    { path: 'team',     component: TeamComponent},
+    { path: 'sponsor',     component: SponsorsComponent },
+
 ];
 
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+
     ],
     exports: [
     ],

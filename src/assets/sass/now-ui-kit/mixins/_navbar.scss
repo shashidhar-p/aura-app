@@ -164,11 +164,18 @@
         @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
 
         &:before{
-            background: $brand-primary; /* For browsers that do not support gradients */
-            background: -webkit-linear-gradient($brand-primary 0%, #000 80%); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient($brand-primary 0%, #000 80%); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient($brand-primary 0%, #000 80%); /* For Firefox 3.6 to 15 */
-            background: linear-gradient($brand-primary 0%, #000 80%); /* Standard syntax (must be last) */
+            background: #aaaaaa; /* For browsers that do not support gradients */
+            //background: image('../../../img/site-banner.jpeg');
+            height: 100%;
+            background: url('assets/img/scoobydoo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            //background: -webkit-linear-gradient(#aaa 0%, #000 80%); /* For Safari 5.1 to 6.0 */
+            //background: -o-linear-gradient(#aaa 0%, #000 80%); /* For Opera 11.1 to 12.0 */
+            //background: -moz-linear-gradient(#aaa 0%, #000 80%); /* For Firefox 3.6 to 15 */
+            //background: linear-gradient(#aaa 0%, #000 80%); /* Standard syntax (must be last) */
+
             @include opacity(.76);
 
             display: block;
