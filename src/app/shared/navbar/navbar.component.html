@@ -1,64 +1,99 @@
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500" style="background-color:gray;">
     <div class="container">
-<!--      <div class="dropdown button-dropdown">-->
-<!--        <div ngbDropdown>-->
-<!--          <a class="dropdown-toggle" ngbDropdownToggle>-->
-<!--              <span class="button-bar"></span>-->
-<!--              <span class="button-bar"></span>-->
-<!--              <span class="button-bar"></span>-->
-<!--          </a>-->
-<!--           <div ngbDropdownMenu>-->
-<!--             <a class="dropdown-header">Dropdown header</a>-->
-<!--             <a class="dropdown-item" href="#">Action</a>-->
-<!--             <a class="dropdown-item" href="#">Another action</a>-->
-<!--             <a class="dropdown-item" href="#">Something else here</a>-->
-<!--             <div class="dropdown-divider"></div>-->
-<!--             <a class="dropdown-item" href="#">Separated link</a>-->
-<!--             <div class="dropdown-divider"></div>-->
-<!--             <a class="dropdown-item" href="#">One more separated link</a>-->
-<!--           </div>-->
-<!--         </div>-->
-<!--      </div>-->
-        <div class="navbar-translate">
-            <a class="navbar-brand" [routerLink]="['/landing']" placement="bottom">
+        <!--      <div class="dropdown button-dropdown">-->
+        <!--        <div ngbDropdown>-->
+        <!--          <a class="dropdown-toggle" ngbDropdownToggle>-->
+        <!--              <span class="button-bar"></span>-->
+        <!--              <span class="button-bar"></span>-->
+        <!--              <span class="button-bar"></span>-->
+        <!--          </a>-->
+        <!--           <div ngbDropdownMenu>-->
+        <!--             <a class="dropdown-header">Dropdown header</a>-->
+        <!--             <a class="dropdown-item" href="#">Action</a>-->
+        <!--             <a class="dropdown-item" href="#">Another action</a>-->
+        <!--             <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--             <div class="dropdown-divider"></div>-->
+        <!--             <a class="dropdown-item" href="#">Separated link</a>-->
+        <!--             <div class="dropdown-divider"></div>-->
+        <!--             <a class="dropdown-item" href="#">One more separated link</a>-->
+        <!--           </div>-->
+        <!--         </div>-->
+        <!--      </div>-->
+        <div class="navbar-translate navbar navbar-expand-lg">
+
+            <a class="navbar-brand " [routerLink]="['/landing']" placement="bottom">
                 <b>Home</b>
             </a>
+            <div ngbDropdown class="dropdown">
+                <b>
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+                    Notifications
+                    <i class="now-ui-icons ui-1_bell-53"></i>
+                </a>
+                </b>
+                <div ngbDropdownMenu class="dropdown-menu scrollable-menu" style="background-color: rgba(0,0,0,0.5); margin-left: -40%;margin-right:-40%;max-height:1269%; padding: 10px;height:auto">
+                    <div *ngFor="let alert of alerts">
+                        <ngb-alert [type]="alert.type" [dismissible]="false">
+                            <div class="container">
+                                <div class="alert-wrapper">
+                                    <div class="message alert-msg">
+                                        <!--                                        <ng-container *ngIf="alert.icon">-->
+                                        <!--                                            <div class="alert-icon">-->
+                                        <!--                                                <i class="now-ui-icons {{alert.icon}}"></i>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </ng-container>-->
+                                        <strong>{{alert.strong}} : </strong>{{ alert.message }}
+                                    </div>
+                                </div>
+                            </div>
+                        </ngb-alert>
+                    </div>
+
+
+                </div>
+            </div>
+
             <b>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()" >
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+                        (click)="sidebarToggle()">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
             </b>
         </div>
 
-        <div class="collapse navbar-collapse" style="" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
-<!--            style="height: 100%; background: url('assets/img/scoobydoo.png'); background-size: cover;"-->
-            <ul class="navbar-nav ml-auto" >
+        <div class="collapse navbar-collapse" style="" data-nav-image="assets/img/blurred-image-1.jpg"
+             data-color="orange">
+            <!--            style="height: 100%; background: url('assets/img/scoobydoo.png'); background-size: cover;"-->
+            <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" title="Rule Book" data-placement="bottom" download="AuraRulebook2020" href="assets/files/AuraRulebook2020.pdf">
+                    <a class="nav-link" title="Rule Book" data-placement="bottom" download="AuraRulebook2020"
+                       href="assets/files/AuraRulebook2020.pdf">
                         <i class="now-ui-icons files_paper"></i>
                         <p class="d-lg-none d-xl-none">Rule Book</p>
                     </a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link" rel="tooltip" title="Events" data-placement="bottom" [routerLink]="['/events']" >-->
-<!--                    <i class="now-ui-icons education_paper"></i>-->
-<!--                    <p class="d-lg-none d-xl-none">Events</p>-->
-<!--                  </a>-->
-<!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link" rel="tooltip" title="Events" data-placement="bottom" [routerLink]="['/events']" >-->
+                <!--                    <i class="now-ui-icons education_paper"></i>-->
+                <!--                    <p class="d-lg-none d-xl-none">Events</p>-->
+                <!--                  </a>-->
+                <!--                </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" rel="tooltip" title="Our Team" data-placement="bottom" [routerLink]="['/team']">
-                    <i class="now-ui-icons users_circle-08"></i>
-                    <p class="d-lg-none d-xl-none">Organizing Committee</p>
-                  </a>
+                    <a class="nav-link" rel="tooltip" title="Our Team" data-placement="bottom" [routerLink]="['/team']">
+                        <i class="now-ui-icons users_circle-08"></i>
+                        <p class="d-lg-none d-xl-none">Organizing Committee</p>
+                    </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://instagram.com/klsgit_studentcouncil?igshid=1bkwuz2eqhfh6">
-                    <i class="fab fa-instagram"></i>
-                    <p class="d-lg-none d-xl-none">Student Council</p>
-                  </a>
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
+                       href="https://instagram.com/klsgit_studentcouncil?igshid=1bkwuz2eqhfh6">
+                        <i class="fab fa-instagram"></i>
+                        <p class="d-lg-none d-xl-none">Student Council</p>
+                    </a>
                 </li>
             </ul>
         </div>

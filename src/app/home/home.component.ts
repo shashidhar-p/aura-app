@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as Rellax from 'rellax';
+import {IAlert} from '../components/notification/notification.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,9 @@ export class HomeComponent implements OnInit {
   focus;
   focus1;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
     var rellaxHeader = new Rellax('.rellax-header');
@@ -31,4 +34,6 @@ export class HomeComponent implements OnInit {
 
 
 
+
 }
+

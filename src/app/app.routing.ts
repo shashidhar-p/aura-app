@@ -13,6 +13,7 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {TeamComponent} from './team/team.component';
 import {SponsorsComponent} from './sponsors/sponsors.component';
+import {NotificationComponent} from './components/notification/notification.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes =[
     { path: 'events',     component: EventsComponent },
     { path: 'team',     component: TeamComponent},
     { path: 'sponsor',     component: SponsorsComponent },
+    {path: 'notification', component: NotificationComponent },
 
 ];
 

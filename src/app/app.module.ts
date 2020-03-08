@@ -13,6 +13,7 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {TeamComponent} from './team/team.component';
 import {SponsorsComponent} from './sponsors/sponsors.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import {SponsorsComponent} from './sponsors/sponsors.component';
         NgbModule.forRoot(),
         FormsModule,
         RouterModule,
+        HttpClientModule,
         AppRoutingModule,
         ComponentsModule,
         ExamplesModule
