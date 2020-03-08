@@ -1,3 +1,92 @@
-<p>
-  events works!
-</p>
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+             style="background-image: url('assets/img/site-banner.jpeg');">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <img class="img-raised" src="assets//img/aura-logo-site.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-tabs">
+        <div class="container" *ngFor="let club of newData">
+            <h2><b>{{objectkeys(club)[0].toUpperCase()}}</b></h2>
+            <div class="row" *ngFor="let key of objectkeys(club)">
+                <div class="col-md-10 ml-auto col-xl-6 mr-auto" *ngFor="let data of club[key]">
+                    <p class="category">{{data.name}}</p>
+                    <!-- Tabs with Background on Card -->
+                    <div class="card">
+                        <div class="nav-tabs-navigation" data-tabs-color="orange">
+                            <div class="nav-tabs-wrapper">
+                                <ngb-tabset [justify]="'center'" class="text-center">
+                                    <ngb-tab title="Event">
+                                        <ng-template ngbTabContent>
+                                            <div class="web-mobile-jugaad" style="">
+                                                <div id="images">
+                                                    <div class="col-12" style="padding: 10px 10px 0px 10px;">
+                                                        <img src="{{'https://aura.git.edu/api/uploads/' + data.poster}}"
+                                                             alt="Raised Image"
+                                                             class="rounded img-raised">
+                                                    </div>
+                                                    <p style="padding: 10px 10px 10px 10px;">
+                                                        {{data.oneliner}}
+                                                    </p>
+                                                    <div class="col-12">
+                                                        <a [routerLink]="['detail']">
+                                                            <button class="btn btn-primary btn-lg">Register</button>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-tab>
+                                    <ngb-tab title="Description">
+                                        <ng-template ngbTabContent>
+                                            <div class="scrollable-menu">
+
+                                                <div class="web-mobile-jugaad">
+                                                    <p style="padding: 10px 10px 10px 20px;">
+                                                        {{data.description}}
+                                                    </p>
+                                                    <div>
+                                                        <b>Event Coordinators:</b>
+                                                        <p *ngFor="let val of jsonparse(data.coords)">
+                                                            {{val.Name}}:
+                                                            {{val.Contact}}
+                                                            <a href="tel:{{val.Contact}}"
+                                                               class="btn btn-primary btn-icon btn-round"><i
+                                                                    class="fab fas fa-phone"></i></a>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary btn-lg">Register</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-tab>
+                                </ngb-tabset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+    </div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}Developed by <b>Team Aura</b>
+
+            </div>
+        </div>
+    </footer>
+</div>
+

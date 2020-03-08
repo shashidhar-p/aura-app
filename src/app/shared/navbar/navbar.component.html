@@ -31,7 +31,7 @@
                     <i class="now-ui-icons ui-1_bell-53"></i>
                 </a>
                 </b>
-                <div ngbDropdownMenu class="dropdown-menu scrollable-menu" style="background-color: rgba(0,0,0,0.5); margin-left: -40%;margin-right:-40%;max-height:1269%; padding: 10px;height:auto">
+                <div ngbDropdownMenu class="dropdown-menu scrollable-menu" style="background-color: rgba(0,0,0,0.5); margin-left: -40%;margin-right:-40%;max-height:1269%; padding: 10px;height:auto" *ngIf="isNotifs">
                     <div *ngFor="let alert of alerts">
                         <ngb-alert [type]="alert.type" [dismissible]="false">
                             <div class="container">
@@ -48,8 +48,17 @@
                             </div>
                         </ngb-alert>
                     </div>
-
-
+                </div>
+                <div ngbDropdownMenu class="dropdown-menu scrollable-menu" style="background-color: rgba(0,0,0,0.5); margin-left: -40%;margin-right:-40%;max-height:1269%; padding: 10px;height:auto" *ngIf="!isNotifs">
+                    <ngb-alert [dismissible]="false">
+                        <div class="container">
+                            <div class="alert-wrapper">
+                                <div class="message alert-msg">
+                                    <h6>No Notifications</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </ngb-alert>
                 </div>
             </div>
 

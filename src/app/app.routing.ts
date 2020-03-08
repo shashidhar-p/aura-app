@@ -14,6 +14,7 @@ import {EventsComponent} from './events/events.component';
 import {TeamComponent} from './team/team.component';
 import {SponsorsComponent} from './sponsors/sponsors.component';
 import {NotificationComponent} from './components/notification/notification.component';
+import {EventDetailComponent} from './event-detail/event-detail.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -28,6 +29,8 @@ const routes: Routes =[
     { path: 'team',     component: TeamComponent},
     { path: 'sponsor',     component: SponsorsComponent },
     {path: 'notification', component: NotificationComponent },
+    {path: 'events/detail', component: EventDetailComponent },
+
 
 ];
 

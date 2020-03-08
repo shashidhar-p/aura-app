@@ -14,8 +14,9 @@ export class NavbarComponent implements OnInit {
     @Input()
     public alerts: Array<IAlert> = [];
     private backup: Array<IAlert>;
+    public isNotifs:boolean=false;
     data: any;
-    apiUrl = 'http://192.168.0.168:3000/notifs';
+    apiUrl = 'http://aura.git.edu/api/notifs';
 
     constructor(public location: Location, private element: ElementRef, public http: HttpClient) {
         this.sidebarVisible = false;
@@ -74,7 +75,10 @@ export class NavbarComponent implements OnInit {
 
     public fetchNotif() {
         const data = this.http.get<any>(this.apiUrl).subscribe((data) => {
-
+            if(data.length)
+            {
+                this.isNotifs=true;
+            }
             for (let i = data.length - 1; i >= 0; i--) {
                 var inputType;
 

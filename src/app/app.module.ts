@@ -14,6 +14,7 @@ import {EventsComponent} from './events/events.component';
 import {TeamComponent} from './team/team.component';
 import {SponsorsComponent} from './sponsors/sponsors.component';
 import {HttpClientModule} from '@angular/common/http';
+import {EventDetailComponent} from './event-detail/event-detail.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
         NavbarComponent,
         HomeComponent,
         EventsComponent,
+        EventDetailComponent,
         TeamComponent,
         SponsorsComponent
     ],

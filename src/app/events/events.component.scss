@@ -1,0 +1,17 @@
+.scrollable-menu {
+  height: auto;
+
+  max-width: 250%;
+  overflow-x: hidden;
+
+}
+@media only screen and (min-width: 576px) {
+  .web-mobile-jugaad {
+    height: 720px
+  }
+}
+@media only screen and (max-width: 576px) {
+  .web-mobile-jugaad {
+    height: 569px
+  }
+}

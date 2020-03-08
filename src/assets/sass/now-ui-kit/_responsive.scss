@@ -244,7 +244,8 @@
     }
 
     .nav-tabs{
-        display: inline-block;
+        display: inline-flex;
+        flex-wrap: nowrap;
         width: 100%;
         padding-left: 100px;
         padding-right: 100px;
