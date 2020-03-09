@@ -16,7 +16,7 @@ export class EventsComponent implements OnInit {
     objectkeys = Object.keys;
     jsonparse = JSON.parse;
     responseData = {};
-
+    data : Date = new Date();
     constructor(private http: HttpClient) {
     }
 
