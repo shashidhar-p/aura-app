@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="section section-tabs">
+    <div class="section section-tabs" *ngIf="isData">
         <div class="container" *ngFor="let club of newData">
             <h2><b>{{objectkeys(club)[0].toUpperCase()}}</b></h2>
             <div class="row" *ngFor="let key of objectkeys(club)">
@@ -34,9 +34,7 @@
                                                         {{data.oneliner}}
                                                     </p>
                                                     <div class="col-12">
-                                                        <a [routerLink]="['detail']">
                                                             <button class="btn btn-primary btn-lg">Register</button>
-                                                        </a>
                                                     </div>
 
                                                 </div>
@@ -79,6 +77,11 @@
         </div>
 
     </div>
+
+    <div class="section section-tabs" *ngIf="!isData">
+        <h2 align="center">Unable To Fetch Events, Please Check Back Later!</h2>
+    </div>
+
     <footer class="footer footer-default">
         <div class="container">
             <div class="copyright">

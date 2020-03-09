@@ -13,6 +13,7 @@ export class EventsComponent implements OnInit {
     apiUrl = 'https://aura.git.edu/api/events/clubWiseList';
     newData: any;
     coords: any;
+    isData: boolean;
     objectkeys = Object.keys;
     jsonparse = JSON.parse;
     responseData = {};
@@ -23,6 +24,7 @@ export class EventsComponent implements OnInit {
     ngOnInit() {
         this.http.get(this.apiUrl).subscribe((data) => {
             this.newData = data;
+            this.isData = this.isEventListEmpty();
             // for (var i=0; i<this.newData.length; i++) {
             //   this.responseData[this.newData[i].id] = JSON.parse(this.newData[i].coords);
             //   for (var j=0; j<this.responseData[this.newData[i].id].length; j++) {
@@ -55,6 +57,18 @@ export class EventsComponent implements OnInit {
 
 
     }
+    public isEventListEmpty() {
+        var keys = Object.keys(this.newData[0]);
+        var flag = true;
+        for (let i=0; i<keys.length;i++) {
+            if(this.newData[0][keys[i]] == []) {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+
 
 
 }
