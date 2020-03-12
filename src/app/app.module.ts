@@ -17,7 +17,7 @@ import {EventDetailComponent} from './event-detail/event-detail.component';
 import {LoginComponent} from './login/login.component';
 
 // used to create fake backend
-import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './_helpers';
+import {ErrorInterceptor, JwtInterceptor} from './_helpers';
 
 
 

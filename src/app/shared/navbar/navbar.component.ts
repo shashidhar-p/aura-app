@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
     data: any;
     apiUrl = 'http://aura.git.edu/api/notifs';
     currentUser: User;
+    jsonstringify = JSON.stringify;
 
     constructor(
         public location: Location,
