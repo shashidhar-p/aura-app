@@ -1,51 +1,90 @@
 <div class="wrapper">
-  <div class="page-header page-header-small">
-    <div class="page-header-image rellax-header" data-rellax-speed="-8"
-         style="background-image: url('assets/img/site-banner.jpeg');">
-    </div>
-    <div class="container">
-      <div class="content-center">
-        <img class="img-raised" src="assets//img/aura-logo-site.png">
-      </div>
-    </div>
-  </div>
-
-  <div class="section section-about-us">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="title">EVENT NAME</h2>
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+             style="background-image: url('assets/img/site-banner.jpeg');">
         </div>
-        <div class="col-md-8 ml-auto mr-auto text_align-left">
-          <h5 class="description">i7tr4yrgwbdigffuigiugfuiguffgtouytrtiotgfewgiugewfuigwfg8ufwuigfwkugdfskvhewkjgfskjgz</h5>
-          <h5 class="description"><b>Team Size:</b></h5>
-          <h5 class="description"><b>Event Coordinators:</b></h5>
-          <a href="tel:" class="btn btn-primary btn-icon btn-round"><i class="fab fas fa-phone"></i></a>
-          <div class="team">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="team-player">
-                  <img src="assets/img/team/gs1.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                  <h4 class="title"></h4>
-                  <p class="category text-primary"></p>
-                  <a href="https://instagram.com/aditizawar2498?igshid=1eamkscqa1947" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
-                  <a href="tel:+918073291252" class="btn btn-primary btn-icon btn-round"><i class="fab fas fa-phone"></i></a>
-                </div>
-              </div>
+        <div class="container">
+            <div class="content-center">
+                <img class="img-raised" src="assets/img/aura-logo-site.png">
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <footer class="footer footer-default">
-    <div class="container">
-      <div class="copyright">
-        &copy;
-        {{data | date: 'yyyy'}}Developed by <b>Team Aura</b>
 
-      </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">{{newData?.name.toUpperCase()}}</h2>
+                </div>
+                <div class="col-md-8 ml-auto mr-auto text_align-left">
+                    <h5 class="description"><b>Event Description : </b>{{newData?.description}}</h5>
+                    <h5 class="description"><b>Category : </b>{{newData?.category.toUpperCase()}}</h5>
+                    <h5 class="description" *ngIf="teamFlag"><b>Team Size : </b>{{newData?.maxTeamSize}} </h5>
+                    <h5 class="description" *ngIf="!teamFlag"><b>Team Size : </b>{{newData?.minTeamSize}} - {{newData?.maxTeamSize}}</h5>
+                    <br>
+                    <hr>
+                    <div class="section section-team text-center">
+                        <div class="container section section-team text-center">
+                            <div class="team">
+                                <h4 *ngIf="singleCoord"><b>Event Coordinator</b></h4>
+                                <h4 *ngIf="!singleCoord"><b>Event Coordinators</b></h4>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6 ml-auto mr-auto text-center" *ngFor="let coord of coordsArray">
+                                        <div class="team-player">
+                                            <img src="{{'https://aura.git.edu/api/uploads/'+coord.image}}" alt="Thumbnail Image"
+                                                 class="rounded-circle img-fluid img-raised">
+                                            <h4 class="title">{{coord.coordName}}</h4>
+                                            <a href="tel:+91{{coord.coordContact}}" class="btn btn-primary btn-icon btn-round"><i
+                                                    class="fab fas fa-phone"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
+
+    <div class="section section-signup"
+         style="background-image: url('assets/img/jokerfinal.png'); background-size: cover; background-position: top center; min-height: 700px;text-align: center;">
+        <div class="container login-page">
+            <h5 style="color:white;padding-top:20px;padding-bottom: 20px;" ><b>Event Registration</b></h5>
+            <div class="row">
+                <div class="col-md-4 content-center ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="" action="">
+                            <div class="content">
+                                <div class="input-group form-group-no-border input-lg"
+                                     [ngClass]="{'input-group-focus':focus===true}" *ngFor="let i of formArray">
+                                    <input type="text" class="form-control" placeholder="Member Name {{i}}"
+                                           (focus)="focus=true" (blur)="focus=false"
+                                           style="border-bottom-right-radius:unset;">
+                                    &nbsp;
+                                    <input type="text" class="form-control" placeholder="Invoice Id {{i}}"
+                                           (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="#pablo" class="btn btn-round btn-lg btn-block">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}Developed by <b>Team Aura</b>
+
+            </div>
+        </div>
+    </footer>
 </div>
 

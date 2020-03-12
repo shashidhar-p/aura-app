@@ -16,6 +16,9 @@ import {SponsorsComponent} from './sponsors/sponsors.component';
 import {HttpClientModule} from '@angular/common/http';
 import {EventDetailComponent} from './event-detail/event-detail.component';
 
+
+import { UserComponent } from './user/user.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -24,7 +27,9 @@ import {EventDetailComponent} from './event-detail/event-detail.component';
         EventsComponent,
         EventDetailComponent,
         TeamComponent,
-        SponsorsComponent
+        SponsorsComponent,
+        UserComponent
+
     ],
     imports: [
         BrowserAnimationsModule,

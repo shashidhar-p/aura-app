@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {from} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -18,7 +17,10 @@ export class EventsComponent implements OnInit {
     jsonparse = JSON.parse;
     responseData = {};
     data : Date = new Date();
-    constructor(private http: HttpClient) {
+
+    singleCoord:boolean=false; //to check if there is a single coord to print "coordinator" and not "coordinators"
+
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     ngOnInit() {
@@ -56,6 +58,11 @@ export class EventsComponent implements OnInit {
         // );
 
 
+    }
+
+    public moreDetails(id)
+    {
+        this.router.navigate(['event-detail'], { queryParams: { id : id } });
     }
     public isEventListEmpty() {
         var keys = Object.keys(this.newData[0]);

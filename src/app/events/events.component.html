@@ -13,9 +13,32 @@
     <div class="section section-tabs" *ngIf="isData">
         <div class="container" *ngFor="let club of newData">
             <h2><b>{{objectkeys(club)[0].toUpperCase()}}</b></h2>
+            <div class="section section-team text-center">
+                <div class="container">
+                    <h4><b>Main Coordinators</b></h4>
+                    <div class="separator separator-primary"></div>
+                    <div class="team">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto mr-auto text-center">
+                                <div class="team-player">
+                                    <img src="assets/img/team/gs1.jpg" alt="Thumbnail Image"
+                                         class="rounded-circle img-fluid img-raised">
+                                    <h4 class="title">Aditi Zawar</h4>
+                                    <p class="category text-primary"></p>
+                                    <a href="https://instagram.com/aditizawar2498?igshid=1eamkscqa1947"
+                                       class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                                    <a href="tel:+918073291252" class="btn btn-primary btn-icon btn-round"><i
+                                            class="fab fas fa-phone"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
             <div class="row" *ngFor="let key of objectkeys(club)">
                 <div class="col-md-10 ml-auto col-xl-6 mr-auto" *ngFor="let data of club[key]">
-                    <p class="category">{{data.name}}</p>
+                    <p style="font-size: x-large" class="category"><b>{{data.name}}</b></p>
                     <!-- Tabs with Background on Card -->
                     <div class="card">
                         <div class="nav-tabs-navigation" data-tabs-color="orange">
@@ -34,7 +57,9 @@
                                                         {{data.oneliner}}
                                                     </p>
                                                     <div class="col-12">
-                                                            <button class="btn btn-primary btn-lg">Register</button>
+                                                        <button class="btn btn-primary btn-lg"
+                                                                (click)="moreDetails(data.id)">Register
+                                                        </button>
                                                     </div>
 
                                                 </div>
@@ -49,11 +74,12 @@
                                                     <p style="padding: 10px 10px 10px 20px;">
                                                         {{data.description}}
                                                     </p>
+                                                    <hr>
                                                     <div>
-                                                        <b>Event Coordinators:</b>
-                                                        <p *ngFor="let val of jsonparse(data.coords)">
-                                                            {{val.Name}}:
-                                                            {{val.Contact}}
+                                                        <h4 *ngIf="jsonparse(data.coords).length==1"><b>Event Coordinator</b></h4>
+                                                        <h4 *ngIf="jsonparse(data.coords).length!=1"><b>Event Coordinators</b></h4>
+                                                        <p style="font-size: large"*ngFor="let val of jsonparse(data.coords)">
+                                                            {{val.Name}} : {{val.Contact}}
                                                             <a href="tel:{{val.Contact}}"
                                                                class="btn btn-primary btn-icon btn-round"><i
                                                                     class="fab fas fa-phone"></i></a>
@@ -61,7 +87,9 @@
                                                     </div>
 
                                                     <div class="col-12">
-                                                        <button class="btn btn-primary btn-lg">Register</button>
+                                                        <button class="btn btn-primary btn-lg"
+                                                                (click)="moreDetails(data.id)">Register
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
