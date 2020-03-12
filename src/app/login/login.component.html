@@ -1,0 +1,68 @@
+
+<div class="page-header" filter-color="yellow">
+    <div class="page-header-image" style="background-image:url(assets/img/site-banner.jpeg)"></div>
+    <div class="container">
+        <div class="col-md-4 content-center">
+            <div class="card card-login card-plain">
+                <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="header header-primary text-center">
+                        <div class="logo-container" style="width: auto;">
+                            <img src="assets/img/aura-logo-site.png" alt="">
+                        </div>
+                        <h3 class="title">Login</h3>
+                    </div>
+<!--                    <div class="content" style="border: ">-->
+<!--                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus===true}">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>-->
+<!--                        </div>-->
+<!--                          <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >-->
+<!--                      </div>-->
+<!--                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus1===true}">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>-->
+<!--                        </div>-->
+<!--                          <input type="password" placeholder="Password" class="form-control" (focus)="focus1=true" (blur)="focus1=false"/>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--TRIAL FOR AUTH-->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Login
+                    </button>
+                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+<!--TRIAL FOR AUTH-->
+
+<!--                    <div class="input-group text-center">-->
+<!--                        <a href="#" class="btn btn-primary btn-round btn-lg btn-block">Login</a>-->
+<!--                    </div>-->
+<!--                    <div class="input-group text-center">-->
+<!--                            <a href="#" class="btn btn-neutral btn-round btn-lg btn-block">Dont have an account? Register.</a>-->
+<!--                    </div>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Developed by <b>Team Aura</b>
+            </div>
+        </div>
+    </footer>
+</div>

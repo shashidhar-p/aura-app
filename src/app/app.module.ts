@@ -1,11 +1,11 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { ExamplesModule } from './examples/examples.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -13,8 +13,12 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {TeamComponent} from './team/team.component';
 import {SponsorsComponent} from './sponsors/sponsors.component';
-import {HttpClientModule} from '@angular/common/http';
 import {EventDetailComponent} from './event-detail/event-detail.component';
+import {LoginComponent} from './login/login.component';
+
+// used to create fake backend
+import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './_helpers';
+
 
 
 import { UserComponent } from './user/user.component';
@@ -28,8 +32,8 @@ import { UserComponent } from './user/user.component';
         EventDetailComponent,
         TeamComponent,
         SponsorsComponent,
-        UserComponent
-
+        UserComponent,
+        LoginComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -39,9 +43,15 @@ import { UserComponent } from './user/user.component';
         HttpClientModule,
         AppRoutingModule,
         ComponentsModule,
-        ExamplesModule
+        ReactiveFormsModule
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        // fakeBackendProvider
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

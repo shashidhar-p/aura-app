@@ -2,6 +2,9 @@ import {Component, OnInit, ElementRef, Input} from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {IAlert} from '../../components/notification/notification.component';
 import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from '../../_services';
+import {Router} from '@angular/router';
+import {User} from '../../_models';
 
 @Component({
     selector: 'app-navbar',
@@ -14,13 +17,20 @@ export class NavbarComponent implements OnInit {
     @Input()
     public alerts: Array<IAlert> = [];
     private backup: Array<IAlert>;
-    public isNotifs:boolean=false;
+    public isNotifs: boolean = false;
     data: any;
     apiUrl = 'http://aura.git.edu/api/notifs';
+    currentUser: User;
 
-    constructor(public location: Location, private element: ElementRef, public http: HttpClient) {
+    constructor(
+        public location: Location,
+        private element: ElementRef,
+        public http: HttpClient,
+        public authenticationService: AuthenticationService,
+        public router: Router
+    ) {
         this.sidebarVisible = false;
-
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
     ngOnInit() {
@@ -68,6 +78,7 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     };
+
     public closeAlert(alert: IAlert) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
@@ -75,9 +86,8 @@ export class NavbarComponent implements OnInit {
 
     public fetchNotif() {
         const data = this.http.get<any>(this.apiUrl).subscribe((data) => {
-            if(data.length)
-            {
-                this.isNotifs=true;
+            if (data.length) {
+                this.isNotifs = true;
             }
             for (let i = data.length - 1; i >= 0; i--) {
                 var inputType;
@@ -105,6 +115,11 @@ export class NavbarComponent implements OnInit {
             }
             // this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
         });
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
     }
 }
 

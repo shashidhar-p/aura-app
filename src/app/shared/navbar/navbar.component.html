@@ -104,6 +104,20 @@
                         <p class="d-lg-none d-xl-none">Student Council</p>
                     </a>
                 </li>
+                <li class="nav-item" *ngIf="currentUser">
+                    <a class="nav-link" rel="tooltip" title="Logout" data-placement="bottom"
+                       (click)="logout()">
+                        <i class="fab fa-sign-out"></i>
+                        <p class="d-lg-none d-xl-none">Log Out</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!currentUser">
+                    <a class="nav-link" rel="tooltip" title="Login" data-placement="bottom"
+                       [routerLink]="['/login']">
+                        <i class="fab fa-sign-in"></i>
+                        <p class="d-lg-none d-xl-none">Log in</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
